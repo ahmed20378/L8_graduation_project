@@ -1,0 +1,226 @@
+
+Drivers_template_6_1(10)_6_1(6).elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000fc  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000170  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800060  00800060  00000170  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000170  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000001a0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000b0  00000000  00000000  000001dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000089d  00000000  00000000  0000028c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006ff  00000000  00000000  00000b29  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004a3  00000000  00000000  00001228  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000108  00000000  00000000  000016cc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000461  00000000  00000000  000017d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000007d  00000000  00000000  00001c35  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000070  00000000  00000000  00001cb2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__vector_10>
+  2c:	0c 94 68 00 	jmp	0xd0	; 0xd0 <__vector_11>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a1 36       	cpi	r26, 0x61	; 97
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 56 00 	call	0xac	; 0xac <main>
+  74:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <SMART_HOME_WITH_SPI_SLAVE>:
+char SPI_DATA_RECEIVE ;
+
+void SMART_HOME_WITH_SPI_SLAVE()
+{
+	
+	SPI_DATA_RECEIVE = SPI_RECEIVE_DATA();
+  7c:	0e 94 64 00 	call	0xc8	; 0xc8 <SPI_RECEIVE_DATA>
+  80:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if (SPI_DATA_RECEIVE=='1')
+  84:	81 33       	cpi	r24, 0x31	; 49
+  86:	11 f4       	brne	.+4      	; 0x8c <SMART_HOME_WITH_SPI_SLAVE+0x10>
+	{
+		PORTA |= 0X01;
+  88:	d8 9a       	sbi	0x1b, 0	; 27
+  8a:	08 95       	ret
+	}
+
+	else if (SPI_DATA_RECEIVE=='2')
+  8c:	82 33       	cpi	r24, 0x32	; 50
+  8e:	11 f4       	brne	.+4      	; 0x94 <SMART_HOME_WITH_SPI_SLAVE+0x18>
+	{
+		PORTA &= ~0X01;
+  90:	d8 98       	cbi	0x1b, 0	; 27
+  92:	08 95       	ret
+	}
+	else if (SPI_DATA_RECEIVE=='3')
+  94:	83 33       	cpi	r24, 0x33	; 51
+  96:	11 f4       	brne	.+4      	; 0x9c <SMART_HOME_WITH_SPI_SLAVE+0x20>
+	{
+		PORTA |= 0X02;
+  98:	d9 9a       	sbi	0x1b, 1	; 27
+  9a:	08 95       	ret
+	}
+	else if (SPI_DATA_RECEIVE=='4')
+  9c:	84 33       	cpi	r24, 0x34	; 52
+  9e:	11 f4       	brne	.+4      	; 0xa4 <SMART_HOME_WITH_SPI_SLAVE+0x28>
+	{
+		PORTA &= ~0X02;
+  a0:	d9 98       	cbi	0x1b, 1	; 27
+  a2:	08 95       	ret
+	}
+	else if (SPI_DATA_RECEIVE=='E')
+  a4:	85 34       	cpi	r24, 0x45	; 69
+  a6:	09 f4       	brne	.+2      	; 0xaa <SMART_HOME_WITH_SPI_SLAVE+0x2e>
+	{
+		PORTA=0X00;
+  a8:	1b ba       	out	0x1b, r1	; 27
+  aa:	08 95       	ret
+
+000000ac <main>:
+#define F_CPU 16000000UL
+#include <util/delay.h>
+
+int main()
+{ 
+	DDRA=0xff;
+  ac:	8f ef       	ldi	r24, 0xFF	; 255
+  ae:	8a bb       	out	0x1a, r24	; 26
+    SPI_INITI_SLAVE();          /**SPI_INITIALZETION**/
+  b0:	0e 94 5d 00 	call	0xba	; 0xba <SPI_INITI_SLAVE>
+
+	while (1)
+	
+	{
+		
+		SMART_HOME_WITH_SPI_SLAVE();
+  b4:	0e 94 3e 00 	call	0x7c	; 0x7c <SMART_HOME_WITH_SPI_SLAVE>
+  b8:	fd cf       	rjmp	.-6      	; 0xb4 <main+0x8>
+
+000000ba <SPI_INITI_SLAVE>:
+void SPI_SEND_DATA(char data)
+{
+	char flush_buffer;
+	SPDR = data;			/* Write data to SPI data register */
+	while(!(SPSR & (1<<SPIF)));	/* Wait till transmission complete */
+	flush_buffer = SPDR;		/* Flush received data */
+  ba:	87 b3       	in	r24, 0x17	; 23
+  bc:	8f 74       	andi	r24, 0x4F	; 79
+  be:	87 bb       	out	0x17, r24	; 23
+  c0:	be 9a       	sbi	0x17, 6	; 23
+  c2:	80 e4       	ldi	r24, 0x40	; 64
+  c4:	8d b9       	out	0x0d, r24	; 13
+  c6:	08 95       	ret
+
+000000c8 <SPI_RECEIVE_DATA>:
+*/
+void SPI_RECEIVE_DATA()
+{
+
+		//SPDR = 0xFF;
+		while(!(SPSR & (1<<SPIF)));	/* Wait till reception complete */
+  c8:	77 9b       	sbis	0x0e, 7	; 14
+  ca:	fe cf       	rjmp	.-4      	; 0xc8 <SPI_RECEIVE_DATA>
+		return(SPDR);			/* Return received data */
+  cc:	8f b1       	in	r24, 0x0f	; 15
+  ce:	08 95       	ret
+
+000000d0 <__vector_11>:
+}
+
+/*************************************ISR***************************************/
+#if TIMER0_TYPE == INTERRUPT
+ISR(TIMER0_OVF_vect)
+{
+  d0:	1f 92       	push	r1
+  d2:	0f 92       	push	r0
+  d4:	0f b6       	in	r0, 0x3f	; 63
+  d6:	0f 92       	push	r0
+  d8:	11 24       	eor	r1, r1
+	/************* Add your code here******************/	
+	
+}
+  da:	0f 90       	pop	r0
+  dc:	0f be       	out	0x3f, r0	; 63
+  de:	0f 90       	pop	r0
+  e0:	1f 90       	pop	r1
+  e2:	18 95       	reti
+
+000000e4 <__vector_10>:
+
+ISR(TIMER0_COMP_vect)
+{
+  e4:	1f 92       	push	r1
+  e6:	0f 92       	push	r0
+  e8:	0f b6       	in	r0, 0x3f	; 63
+  ea:	0f 92       	push	r0
+  ec:	11 24       	eor	r1, r1
+	/************* Add your code here******************/	
+	
+}
+  ee:	0f 90       	pop	r0
+  f0:	0f be       	out	0x3f, r0	; 63
+  f2:	0f 90       	pop	r0
+  f4:	1f 90       	pop	r1
+  f6:	18 95       	reti
+
+000000f8 <_exit>:
+  f8:	f8 94       	cli
+
+000000fa <__stop_program>:
+  fa:	ff cf       	rjmp	.-2      	; 0xfa <__stop_program>
